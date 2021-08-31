@@ -1,7 +1,7 @@
 '''
 Author: your name
 Date: 2021-08-27 10:07:50
-LastEditTime: 2021-08-27 14:53:16
+LastEditTime: 2021-08-31 18:12:05
 LastEditors: Please set LastEditors
 Description: In User Settings Edit
 FilePath: /ADS_B_select_files_/MCD/svhn2mnist.py
@@ -29,11 +29,11 @@ class Feature(nn.Module):
 
 
 class Predictor(nn.Module):
-    def __init__(self, prob=0.5):
+    def __init__(self,num_classes = 34,  prob=0.5):
         super(Predictor, self).__init__()
         self.fc1 = nn.Linear(2048, 512)
         self.bn1_fc = nn.BatchNorm1d(512)
-        self.fc2 = nn.Linear(512, 34)
+        self.fc2 = nn.Linear(512, num_classes)
         # self.bn_fc3 = nn.BatchNorm1d(34)
         self.prob = prob
 
