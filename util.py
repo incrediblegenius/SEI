@@ -99,3 +99,8 @@ def ResampleSignal16x16(sig):
     x = sgn.resample(sig,16*16)
     x_min ,x_max = x.min(0),x.max(0)
     return (x-x_min)/(x_max-x_min)
+
+def ProcessSignal_noise(sig,fs,lowcutoff=1*10**6):
+    x = sgn.resample(butter_lowpass_filter(sig,lowcutoff,fs,5),64*64)
+    x_min ,x_max = x.min(0),x.max(0)
+    return (x-x_min)/(x_max-x_min)
